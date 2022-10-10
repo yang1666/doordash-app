@@ -1,7 +1,4 @@
-//all api set up
-//login upi
 export const login = (credential) => {
-  //credential ={username:"", password:""}
   const loginUrl = `/login?username=${credential.username}&password=${credential.password}`;
 
   return fetch(loginUrl, {
@@ -60,6 +57,14 @@ export const getCart = () => {
     }
 
     return response.json();
+  });
+};
+
+export const checkout = () => {
+  return fetch('/checkout').then((response) => {
+    if (response.status < 200 || response.status >= 300) {
+      throw Error('Fail to checkout');
+    }
   });
 };
 
